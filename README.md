@@ -35,3 +35,23 @@ Requirements:
   - After each customer has purchased their bike
       - Bicycle shop's remaining inventory for each bike
       - How much profit they have made selling the three bikes.
+
+
+Extra Challenge
+
+Alter your classes
+  Wheels
+    - Have a model name
+    - Have a weight
+    - Have a cost to produce
+    - There should be a total of three different wheel types
+  Frames
+    - Can be made of aluminum, carbon, or steel
+    - Have a weight
+    - Have a cost to produce
+  Bicycle
+    - Be comprised of two wheels of the same type and a frame
+    - Have a weight equal to the sum of the weight of the frame and two wheels
+    - Have a cost to produce equal to the sum of the two wheels' and frame's cost to produce
+
+Update your testing script to reflect the changes that you have made here
