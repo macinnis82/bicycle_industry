@@ -1,14 +1,3 @@
-class Bicycle(object):
-  """ Bicycles have a model name, a weight, a cost to produce """
-  def __init__(self, model_name, weight, cost_to_produce):
-    self.model_name = model_name
-    self.weight = weight
-    self.cost_to_produce = cost_to_produce
-    
-  def __repr__(self):
-    template = "{0} --> Weight: {1} lbs, Costs: ${2}"
-    return template.format(self.model_name, self.weight, self.cost_to_produce)
-      
 class BikeShop(object):
   """ Bike Shops have a name, an inventory and are profitable """
   def __init__(self, shop_name, margin, shop_inventory):
@@ -30,7 +19,7 @@ class BikeShop(object):
   def sell(self, bike, customer):
     customer.bike = bike
     customer.budget -= bike.cost_to_produce
-    self.profit += self.margin
+    self.profit = bike.price - bike.cost_to_produce
     del self.shop_inventory[bike.model_name]
     
   """ Can see how much profit they have made from selling bikes """
@@ -45,3 +34,32 @@ class Customer(object):
     self.customer_name = customer_name
     self.budget = budget
     self.bike = None
+    
+class Wheel(object):
+  """ Wheels have a model name, a weight, a cost to produce """
+  def __init__(self, model_name, weight, cost_to_produce):
+    self.model_name = model_name
+    self.weight = weight
+    self.cost_to_produce = cost_to_produce
+
+class Frame(object):
+  """ Frames can be made of aluminum, carbon, or steel, have a weight and a cost to produce """
+  def __init__(self, composition, weight, cost_to_produce):
+    self.weight = weight
+    self.cost_to_produce = cost_to_produce
+    self.composition = composition
+    
+class Bicycle(Wheel, Frame):
+  """ Bicycles have a model name, a weight, a cost to produce """
+  # def __init__(self, model_name, weight, cost_to_produce):
+  #   self.model_name = model_name
+  #   self.weight = weight
+  #   self.cost_to_produce = cost_to_produce
+  def __init__(self, model_name, wheel, frame):
+    self.model_name = model_name
+    self.weight = frame.weight + (2 * wheel.weight)
+    self.cost_to_produce = (2 * wheel.cost_to_produce) + frame.cost_to_produce
+    
+  def __repr__(self):
+    template = "{0} --> Weight: {1} lbs, Cost: ${2}"
+    return template.format(self.model_name, self.weight, self.cost_to_produce)    

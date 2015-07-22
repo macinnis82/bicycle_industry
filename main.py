@@ -1,14 +1,24 @@
 import random
-from bicycles import Bicycle, BikeShop, Customer
+from bicycles import Bicycle, BikeShop, Customer, Wheel, Frame
 
 if __name__ == '__main__':
+  """ Create 3 different wheel types """
+  wheel1 = Wheel("Performance", 2, 550)
+  wheel2 = Wheel("Mountain", 3, 1000)
+  wheel3 = Wheel("Road", 3, 600)
+
+  """ Create frames """
+  frame1 = Frame("Aluminum", 12, 500)
+  frame2 = Frame("Carbon", 8, 750)
+  frame3 = Frame("Steel", 15, 400)
+  
   """ Create 6 different bicycle models """
-  first_bike = Bicycle("Road", 20, 200)
-  second_bike = Bicycle("Mountain", 40, 300)
-  third_bike = Bicycle("Touring", 35, 650)
-  fourth_bike = Bicycle("Hybrid", 20, 720)
-  fifth_bike = Bicycle("Triathlon", 45, 475)
-  sixth_bike = Bicycle("Track", 30, 250)
+  first_bike = Bicycle("Road", wheel3, frame1)
+  second_bike = Bicycle("Mountain", wheel2, frame3)
+  third_bike = Bicycle("Touring", wheel3, frame1)
+  fourth_bike = Bicycle("Hybrid", wheel2, frame3)
+  fifth_bike = Bicycle("Triathlon", wheel1, frame2)
+  sixth_bike = Bicycle("Track", wheel1, frame2)
 
   """ Create a bicycle shop that has 6 different bicycle models in stock """
   inventory_list = [ first_bike, second_bike, third_bike, fourth_bike, fifth_bike, sixth_bike ]
@@ -20,7 +30,7 @@ if __name__ == '__main__':
   print bike_shop
     
   """ Create three customers """
-  customer_list = [ Customer("Ryan", 200), Customer("Audrey", 500), Customer("Amy", 1000) ]
+  customer_list = [ Customer("Ryan", 2000), Customer("Audrey", 3500), Customer("Amy", 4500) ]
   
   """ 
   Print the name of each customer
